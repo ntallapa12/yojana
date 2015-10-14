@@ -2,7 +2,7 @@
  * Copyright (c) 2015 The original author or authors.
  *
  *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Apache License v2.0
+ *  are made available under the terms of the Apache License v2.0 
  *  which accompanies this distribution.
  *
  *  The Apache License v2.0 is available at
@@ -11,8 +11,8 @@
  *  You may elect to redistribute this code under this license.
  */
 
-include "auth"
-include "core"
-include "engine"
-include "webapp"
-include "yojana-web"
+package in.factly.yojana;
+
+public class ServerTest {
+
+}

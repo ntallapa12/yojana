@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Search schemes</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style type="text/css">
+      body {
+        padding-top: 70px;
+        padding-bottom: 20px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Yojana</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" name="search" placeholder="Search" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">GO</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Filters</h3>
+            </div>
+            <!-- TODO: Use results from Solr facet queries -->
+            <div class="panel-body">
+              <ul class="list-group">
+                <li class="list-group-item active">Income</li>
+                <li class="list-group-item">
+                  <span class="badge">2</span>
+                  20000 - 30000
+                </li>
+                <li class="list-group-item">
+                  <span class="badge">5</span>
+                  30000 - 40000
+                </li>
+                <li class="list-group-item">
+                  <span class="badge">2</span>
+                  40000 - 50000
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9">
+          @if{context.get("docs").size() > 0}
+          @foreach{doc: context.get("docs")}
+          <div class="list-group">
+            <a href="/?id=@{doc.getInteger("id")}" class="list-group-item">
+              <h4 class="list-group-item-heading">@{doc.getString("name")}</h4>
+              <p class="list-group-item-text">
+                @{doc.getString("summary")}
+              </p>
+            </a>
+          </div>
+          @end{}
+          @end{}
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; Factly 2015</p>
+      </footer>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
+</html>

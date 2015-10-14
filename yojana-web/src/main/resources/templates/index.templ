@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Yojana</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style type="text/css">
+      body {
+        padding-top: 50px;
+        padding-bottom: 20px;
+      }
+
+      .jumbotron {
+        text-align: center;
+        background-color: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Yojana</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" name="search" placeholder="Search" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">GO</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Welfare schemes</h1>
+        <p>A one-stop shop to learn about the various socio-economic schemes offered by the government of India to its citizens.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      @if{context.get("docs").size() > 0}
+      <div class="row">
+        @foreach{doc: context.get("docs")}
+        <div class="col-md-4">
+          <h3>@{java.time.LocalDateTime.parse(doc.getString("start_date"), java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME).format(context.get("fromDT"))}</h3>
+          <p>@{doc.getString("name")}</p>
+          <p><a class="btn btn-default" href="/?id=@{doc.getInteger("id")}" role="button">View details &raquo;</a></p>
+        </div>
+        @end{}
+      </div>
+      @end{}
+
+      <hr>
+
+      <footer>
+        <p>&copy; Factly 2015</p>
+      </footer>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
+</html>
