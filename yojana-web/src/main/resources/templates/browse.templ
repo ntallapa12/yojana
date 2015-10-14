@@ -72,7 +72,7 @@
           @if{context.get("docs").size() > 0}
           @foreach{doc: context.get("docs")}
           <div class="list-group">
-            <a href="/?id=@{doc.getInteger("id")}" class="list-group-item">
+            <a href="/?id=@{doc.getString("id")}" class="list-group-item">
               <h4 class="list-group-item-heading">@{doc.getString("name")}</h4>
               <p class="list-group-item-text">
                 @{doc.getString("summary")}

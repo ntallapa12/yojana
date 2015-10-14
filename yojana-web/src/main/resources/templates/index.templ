@@ -58,7 +58,7 @@
         <div class="col-md-4">
           <h3>@{java.time.LocalDateTime.parse(doc.getString("start_date"), java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME).format(context.get("fromDT"))}</h3>
           <p>@{doc.getString("name")}</p>
-          <p><a class="btn btn-default" href="/?id=@{doc.getInteger("id")}" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="/?id=@{doc.getString("id")}" role="button">View details &raquo;</a></p>
         </div>
         @end{}
       </div>

@@ -39,8 +39,8 @@ public class Server extends AbstractVerticle {
         router.get().handler(ctx -> query(ctx, engine));
 
         // TODO: Use vert.x config to set listener port and solr service address.
-        server.requestHandler(router::accept).listen(8080);
-        logger.info("Server running on port: 8080");
+        server.requestHandler(router::accept).listen(8090);
+        logger.info("Server running on port: 8090");
 
         startFuture.complete();
     }
